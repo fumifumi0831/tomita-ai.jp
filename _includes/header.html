@@ -1,0 +1,16 @@
+<header style="border-bottom: 1px solid #E4E7E3">
+<div style="max-width: 1120px; margin: 0 auto; padding: 22px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="{% if page.home %}#top{% else %}/{% endif %}" style="text-decoration: none; color: #23282A; display: flex; align-items: center; gap: 12px">
+<img src="/favicon.svg" alt="" width="36" height="36" style="display: block">
+<span style="font-size: 18px; font-weight: 700">富田AIデジタル活用支援事務所</span>
+</a>
+<nav class="site-nav" aria-label="{% if page.home %}ページ内メニュー{% else %}メニュー{% endif %}" style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 15px">{% if page.home %}
+<a href="#services" style="text-decoration: none; color: #23282A">できること</a>
+<a href="#works" style="text-decoration: none; color: #23282A">実績</a>
+<a href="#profile" style="text-decoration: none; color: #23282A">プロフィール</a>
+<a href="#contact" style="text-decoration: none; color: #2F5D50; font-weight: 700">お問い合わせ</a>
+{% else %}
+<a href="/" style="text-decoration: none; color: #23282A">トップへ戻る</a>
+{% endif %}</nav>
+</div>
+</header>
