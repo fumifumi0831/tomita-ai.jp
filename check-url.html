@@ -51,6 +51,50 @@ description: SMSやメールで届いたリンクを開く前に貼り付ける�
 </section>
 
 <section>
+<div style="max-width: 1120px; margin: 0 auto; padding: 72px 24px 0; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
+<h2 style="margin: 0; font-size: 26px; font-weight: 700">判定の仕組み</h2>
+<p style="margin: 0; font-size: 16px; color: #4A5250">見つかった印の点数を合計して、3点以上なら「開かないほうがよい印があります」、1〜2点なら「注意したほうがいい印があります」、0点なら「目立った印は見つかりませんでした」と表示します。強い印が1つあれば、それだけで「開かないほうがよい」になります。</p>
+<p style="margin: 0; font-size: 16px; font-weight: 700; color: #2F5D50">点数の付け方と3段階の線引きは、この事務所の目安です。それぞれの印の根拠は、下の表のとおりです。</p>
+</div>
+<div style="overflow-x: auto; max-width: 960px">
+<table style="width: 100%; min-width: 560px; border-collapse: collapse; font-size: 15px; line-height: 1.7">
+<thead><tr>
+<th style="text-align:left;padding:0 12px 10px 0;border-bottom:2px solid #2F5D50">印</th>
+<th style="text-align:left;padding:0 12px 10px;border-bottom:2px solid #2F5D50">点数</th>
+<th style="text-align:left;padding:0 0 10px 12px;border-bottom:2px solid #2F5D50">根拠</th>
+</tr></thead>
+<tbody>
+<tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid #E4E7E3;vertical-align:top">登録から32日以内のドメイン</td><td style="padding:12px;border-bottom:1px solid #E4E7E3;vertical-align:top;white-space:nowrap;font-variant-numeric:tabular-nums">3点</td><td style="padding:12px 0 12px 12px;border-bottom:1px solid #E4E7E3;vertical-align:top;color:#4A5250">Unit 42（Palo Alto Networks）の調査では、登録から32日以内のドメインの7割超が悪性・疑わしい・業務に不適切に分類され、よく使われるドメインの約10倍でした（2019年）</td></tr>
+<tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid #E4E7E3;vertical-align:top">Amazon・Apple・ANA・日本航空の名前を含むのに、公式のドメインではない</td><td style="padding:12px;border-bottom:1px solid #E4E7E3;vertical-align:top;white-space:nowrap;font-variant-numeric:tabular-nums">3点</td><td style="padding:12px 0 12px 12px;border-bottom:1px solid #E4E7E3;vertical-align:top;color:#4A5250">フィッシング対策協議会・JPCERT/CCの報告で、なりすましが多いブランド（2025年9月の報告でAmazon約15.4%、Apple約11.3%など）</td></tr>
+<tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid #E4E7E3;vertical-align:top">ドメイン名ではなく数字だけの住所（IPアドレス）</td><td style="padding:12px;border-bottom:1px solid #E4E7E3;vertical-align:top;white-space:nowrap;font-variant-numeric:tabular-nums">3点</td><td style="padding:12px 0 12px 12px;border-bottom:1px solid #E4E7E3;vertical-align:top;color:#4A5250">一般的な注意点。調査による裏付けではなく、この事務所の目安です</td></tr>
+<tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid #E4E7E3;vertical-align:top">紛らわしい文字を使ったドメイン（xn-- で始まる部分を含む）</td><td style="padding:12px;border-bottom:1px solid #E4E7E3;vertical-align:top;white-space:nowrap;font-variant-numeric:tabular-nums">3点</td><td style="padding:12px 0 12px 12px;border-bottom:1px solid #E4E7E3;vertical-align:top;color:#4A5250">一般的な注意点。調査による裏付けではなく、この事務所の目安です</td></tr>
+<tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid #E4E7E3;vertical-align:top">末尾が .lol、.bond、.support、.top、.sbs</td><td style="padding:12px;border-bottom:1px solid #E4E7E3;vertical-align:top;white-space:nowrap;font-variant-numeric:tabular-nums">1点</td><td style="padding:12px 0 12px 12px;border-bottom:1px solid #E4E7E3;vertical-align:top;color:#4A5250">Interisle「Phishing Landscape 2024」（2023年5月〜2024年4月）で、登録数に対するフィッシングの割合が高かった上位5つ</td></tr>
+<tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid #E4E7E3;vertical-align:top">http:// で始まる（暗号化されていない）</td><td style="padding:12px;border-bottom:1px solid #E4E7E3;vertical-align:top;white-space:nowrap;font-variant-numeric:tabular-nums">1点</td><td style="padding:12px 0 12px 12px;border-bottom:1px solid #E4E7E3;vertical-align:top;color:#4A5250">一般的な注意点。調査による裏付けではなく、この事務所の目安です</td></tr>
+<tr><td style="padding:12px 12px 12px 0;border-bottom:1px solid #E4E7E3;vertical-align:top">短縮URLで行き先が見えない</td><td style="padding:12px;border-bottom:1px solid #E4E7E3;vertical-align:top;white-space:nowrap;font-variant-numeric:tabular-nums">1点</td><td style="padding:12px 0 12px 12px;border-bottom:1px solid #E4E7E3;vertical-align:top;color:#4A5250">一般的な注意点。調査による裏付けではなく、この事務所の目安です</td></tr>
+</tbody>
+</table>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px; max-width: 760px">
+<h3 style="margin: 0; font-size: 19px; font-weight: 700">URLの形だけでは見抜けない手口もあります</h3>
+<ul style="margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; color: #4A5250">
+<li>正規のサービスの転送機能を踏み台にして、本物のドメインから詐欺サイトへ飛ばす手口</li>
+<li>メールごとにサブドメインを変えて、同じURLが二度と出てこないようにする手口</li>
+<li>無料で作れるサブドメインのサービスを使う手口（2023〜2024年のフィッシングの約24%）</li>
+<li>昔からある正規のサイトが乗っ取られ、その一部が詐欺に使われる場合</li>
+</ul>
+<p style="margin: 0; font-size: 16px; color: #4A5250">こうした場合は、このチェックで印が出ないことがあります。心当たりのない連絡のリンクは、印の有無にかかわらず開かないのがいちばん確実です。</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #5C6461; max-width: 760px">
+<p style="margin: 0; font-weight: 700">出典</p>
+<p style="margin: 0"><a href="https://unit42.paloaltonetworks.com/newly-registered-domains-malicious-abuse-by-bad-actors/" target="_blank" rel="noopener">Unit 42「Newly Registered Domains: Malicious Abuse by Bad Actors」</a>（Palo Alto Networks、2019年）</p>
+<p style="margin: 0"><a href="https://interisle.net/PhishingLandscape2024" target="_blank" rel="noopener">Interisle Consulting Group「Phishing Landscape 2024」</a>（調査期間 2023年5月〜2024年4月）</p>
+<p style="margin: 0"><a href="https://www.nic.ad.jp/ja/materials/iw/2025/proceedings/h3/h3-hiratsuka.pdf" target="_blank" rel="noopener">JPCERT/CC・フィッシング対策協議会「フィッシングメールの配信状況（2025年版）」</a>（Internet Week 2025）</p>
+</div>
+</div>
+</section>
+
+<section>
 <div style="max-width: 1120px; margin: 0 auto; padding: 72px 24px 0; display: flex; flex-direction: column; gap: 28px">
 <div style="display: flex; flex-wrap: wrap; gap: 32px">
 <div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
@@ -80,32 +124,17 @@ description: SMSやメールで届いたリンクを開く前に貼り付ける�
 
 <script>
 (function () {
-  // 公式ドメインの例（名前を含むのにここ以外なら「なりすましの印」）
+  // フィッシング対策協議会・JPCERT/CC「フィッシングメールの配信状況（2025年版）」で多いと報告されたブランド
   var BRANDS = [
     ['amazon', ['amazon.co.jp', 'amazon.com']],
-    ['rakuten', ['rakuten.co.jp', 'rakuten.com']],
-    ['yamato', ['kuronekoyamato.co.jp', 'yamato-hd.co.jp']],
-    ['kuroneko', ['kuronekoyamato.co.jp']],
-    ['sagawa', ['sagawa-exp.co.jp']],
-    ['japanpost', ['japanpost.jp']],
-    ['yubin', ['japanpost.jp']],
-    ['smbc', ['smbc.co.jp', 'smbc-card.com']],
-    ['mufg', ['mufg.jp']],
-    ['mizuho', ['mizuhobank.co.jp', 'mizuho-fg.co.jp']],
-    ['yucho', ['jp-bank.japanpost.jp', 'japanpost.jp']],
     ['apple', ['apple.com']],
     ['icloud', ['icloud.com', 'apple.com']],
-    ['docomo', ['docomo.ne.jp']],
-    ['softbank', ['softbank.jp', 'softbank.co.jp']],
-    ['paypay', ['paypay.ne.jp']],
-    ['mercari', ['mercari.com']],
-    ['aeon', ['aeon.co.jp', 'aeon.com']],
-    ['nta', ['nta.go.jp']],
-    ['google', ['google.com', 'google.co.jp']],
-    ['microsoft', ['microsoft.com']]
+    ['ana', ['ana.co.jp']],
+    ['jal', ['jal.co.jp', 'jal.com']]
   ];
   var SHORTENERS = ['bit.ly', 't.co', 'tinyurl.com', 'is.gd', 'ow.ly', 'buff.ly', 'x.gd', 'cutt.ly', 'rebrand.ly', 'shorturl.at', 'v.gd'];
-  var RISKY_TLDS = ['top', 'xyz', 'icu', 'buzz', 'click', 'cyou', 'sbs', 'cfd', 'rest', 'lol', 'mom', 'bond', 'cn'];
+  // Interisle「Phishing Landscape 2024」で、登録数に対するフィッシングの割合が高かった上位5つ
+  var RISKY_TLDS = ['lol', 'bond', 'support', 'top', 'sbs'];
   var JP_SECOND = ['co', 'or', 'ne', 'ac', 'go', 'ed', 'gr', 'ad'];
   var JP_PREFS = 'hokkaido aomori iwate miyagi akita yamagata fukushima ibaraki tochigi gunma saitama chiba tokyo kanagawa niigata toyama ishikawa fukui yamanashi nagano gifu shizuoka aichi mie shiga kyoto osaka hyogo nara wakayama tottori shimane okayama hiroshima yamaguchi tokushima kagawa ehime kochi fukuoka saga nagasaki kumamoto oita miyazaki kagoshima okinawa'.split(' ');
   var OTHER_SECOND = ['co.uk', 'com.cn', 'com.tw', 'com.hk', 'com.au', 'co.kr'];
@@ -207,7 +236,7 @@ description: SMSやメールで届いたリンクを開く前に貼り付ける�
     var tokens = host.split(/[.\-]/);
     var brandHit = BRANDS.filter(function (b) { return tokens.some(function (t) { return t === b[0] || (b[0].length >= 5 && t.indexOf(b[0]) >= 0); }) && b[1].indexOf(domain) < 0 && !b[1].some(function (d) { return host === d || host.slice(-(d.length + 1)) === '.' + d; }); })[0];
     if (brandHit && !isIp) { rows.push(row('high', '有名なサービスの名前を含むのに、公式のドメインではない', '「' + esc(brandHit[0]) + '」を含みますが、公式のドメイン（' + esc(brandHit[1].join('、')) + '）ではありません。なりすましによく使われる形です。')); score += 3; }
-    if (!isIp && RISKY_TLDS.indexOf(tld) >= 0) { rows.push(row('mid', '詐欺に使われることが多い末尾', '「.' + esc(tld) + '」は安く取れるため、詐欺サイトに使われやすい末尾です。これだけで危険とは限りません。')); score += 1; }
+    if (!isIp && RISKY_TLDS.indexOf(tld) >= 0) { rows.push(row('mid', '詐欺に使われることが多い末尾', '「.' + esc(tld) + '」は、調査でフィッシングに使われる割合が高かった末尾です。これだけで危険とは限りません。')); score += 1; }
 
     out.innerHTML = '<p style="margin:0;font-size:16px">調べています…（' + esc(domain) + '）</p>';
     btn.disabled = true;
@@ -216,11 +245,10 @@ description: SMSやメールで届いたリンクを開く前に貼り付ける�
       if (a.date) {
         var days = Math.floor((Date.now() - a.date.getTime()) / 86400000);
         var when = a.date.getFullYear() + '年' + (a.date.getMonth() + 1) + '月' + a.date.getDate() + '日';
-        if (days < 30) { rows.unshift(row('high', 'できたばかりのサイト', when + 'に登録された、まだ' + days + '日目のドメインです。詐欺サイトは作ってすぐに使われることが多いです。')); score += 3; }
-        else if (days < 365) { rows.unshift(row('mid', '1年以内にできたサイト', when + 'に登録されたドメインです。新しいお店の可能性もありますが、念のため注意してください。')); score += 1; }
-        else { rows.unshift(row('ok', 'ドメインの登録日', when + 'に登録されたドメインです（約' + Math.floor(days / 365) + '年前）。')); }
+        if (days <= 32) { rows.unshift(row('high', 'できたばかりのサイト', when + 'に登録された、まだ' + days + '日目のドメインです。登録から1か月ほどのドメインは、悪用されている割合が高いと報告されています。')); score += 3; }
+        else { rows.unshift(row('ok', 'ドメインの登録日', when + 'に登録されたドメインです（登録から' + (days >= 365 ? '約' + Math.floor(days / 365) + '年' : days + '日') + '）。')); }
       } else if (a.notFound) {
-        rows.unshift(row('high', '登録が見つからないドメイン', '登録情報が見つかりませんでした。すでに消されたサイトか、入力の誤りかもしれません。')); score += 2;
+        rows.unshift(row('na', 'ドメインの登録日', '登録情報が見つかりませんでした。すでに消されたサイトか、入力の誤りかもしれません。'));
       } else if (!a.skip) {
         rows.unshift(row('na', 'ドメインの登録日', 'このドメインの登録日は、この画面からは調べられませんでした。ほかの印を参考にしてください。'));
       }
