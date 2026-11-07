@@ -1,0 +1,25 @@
+<script>
+(function(){
+  if (!('IntersectionObserver' in window)) return;
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var targets = [];
+  document.querySelectorAll('section:not(#top) > div > *').forEach(function (el) {
+    if (el.tagName === 'UL' || el.tagName === 'OL') {
+      Array.prototype.forEach.call(el.children, function (li, i) {
+        li.style.setProperty('--rd', (i * 0.08) + 's');
+        targets.push(li);
+      });
+    } else {
+      targets.push(el);
+    }
+  });
+  targets.forEach(function (el) { el.classList.add('rv'); });
+  document.documentElement.classList.add('rv-on');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  targets.forEach(function (el) { io.observe(el); });
+})();
+</script>

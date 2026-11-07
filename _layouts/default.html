@@ -28,6 +28,16 @@ a{color:#2F5D50}a:hover{color:#1F4238}
 @keyframes draw{to{stroke-dashoffset:0}}
 .ridge .spark{opacity:0;animation:spark .7s 2.2s ease-out forwards}
 @keyframes spark{0%{opacity:0}40%{opacity:1}70%{opacity:.4}100%{opacity:1}}
+.rv-on .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--rd,0s)}
+.rv-on .rv.in{opacity:1;transform:none}
+#services li>a{transition:transform .25s ease,box-shadow .25s ease}
+#services li>a:hover,#services li>a:focus-visible{transform:translateY(-4px);box-shadow:0 12px 28px rgba(47,93,80,.14)}
+#services li>a>span:last-child{transition:transform .25s ease}
+#services li>a:hover>span:last-child{transform:translateX(6px)}
+#why li{position:relative}
+#why li::before{content:"";position:absolute;left:0;top:-3px;width:100%;height:3px;background:#2F5D50;transform-origin:left}
+.rv-on #why li::before{transform:scaleX(0);transition:transform 1s .25s cubic-bezier(.4,0,.2,1)}
+.rv-on #why li.in::before{transform:scaleX(1)}
 @media (prefers-reduced-motion: reduce){.rise,.ridge .line,.ridge .spark{animation:none!important;opacity:1;stroke-dashoffset:0}}
 .to-top{position:fixed;right:16px;bottom:24px;width:48px;height:48px;border-radius:24px;background:#2F5D50;color:#FFFFFF;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.15);opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
 .to-top.is-visible{opacity:1;visibility:visible}
@@ -42,5 +52,5 @@ a{color:#2F5D50}a:hover{color:#1F4238}
 {% include footer.html %}
 
 </div>
-{% if page.home %}{% include to-top.html %}{% endif %}</body>
+{% if page.home %}{% include to-top.html %}{% endif %}{% include motion.html %}</body>
 </html>
