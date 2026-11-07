@@ -24,9 +24,9 @@ a{color:#2F5D50}a:hover{color:#1F4238}
 @media (max-width: 480px){.site-nav{gap:14px!important;font-size:14px!important;line-height:1.6}.contact-text{text-align:left;font-size:16px!important}}
 .rise{display:block;animation:rise .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--d,0s)}
 @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-.ridge .line{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.4s .6s cubic-bezier(.4,0,.2,1) forwards}
+.ridge .line{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.8s .5s cubic-bezier(.4,0,.2,1) forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
-.ridge .spark{opacity:0;animation:spark .7s 2.7s ease-out forwards}
+.ridge .spark{opacity:0;animation:spark .7s 2.2s ease-out forwards}
 @keyframes spark{0%{opacity:0}40%{opacity:1}70%{opacity:.4}100%{opacity:1}}
 @media (prefers-reduced-motion: reduce){.rise,.ridge .line,.ridge .spark{animation:none!important;opacity:1;stroke-dashoffset:0}}
 .to-top{position:fixed;right:16px;bottom:24px;width:48px;height:48px;border-radius:24px;background:#2F5D50;color:#FFFFFF;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.15);opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
