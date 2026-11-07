@@ -1,0 +1,251 @@
+{
+  "updated": "2026-11-07",
+  "note": "Jグランツ（国・東京都）とJ-Net21（区市町村）から、東京都内の中小企業・個人事業主が使える受付中の制度を選んだもの。deadlineは日本時間、nullは公式サイトで確認。maxEmployeesは従業員数の上限、nullは制限なし。",
+  "purposeLabels": {
+    "it": "ITやデジタルを取り入れたい",
+    "equip": "設備や機械を入れたい",
+    "sales": "販路を広げたい・売上を伸ばしたい",
+    "start": "新しい商品や事業を始めたい",
+    "people": "人を育てたい・働きやすくしたい",
+    "succession": "事業を引き継ぎたい",
+    "cost": "原材料の値上がりに困っている",
+    "area": "商店街・地域で取り組みたい"
+  },
+  "items": [
+    {
+      "title": "中小企業デジタル導入促進補助事業（第2回）",
+      "org": "東京都",
+      "purposes": [
+        "it"
+      ],
+      "maxAmount": 1500000,
+      "deadline": "2027-01-29T23:59",
+      "maxEmployees": null,
+      "summary": "デジタルツールを新しく導入する費用の一部を助成します。会社のほか個人事業主も対象です。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003ZH5uUAG"
+    },
+    {
+      "title": "経営力強化に向けた創意工夫チャレンジ促進事業（業務改善コース・第3回）",
+      "org": "東京都",
+      "purposes": [
+        "it",
+        "equip",
+        "sales"
+      ],
+      "maxAmount": 6000000,
+      "deadline": "2026-11-13T16:00",
+      "maxEmployees": null,
+      "summary": "今の事業を深めて発展させる計画を作ると、審査で認められた経費が助成されます。個人事業主も対象です。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003pt0jUAA"
+    },
+    {
+      "title": "躍進的な事業推進のための設備投資支援事業（第14回）",
+      "org": "東京都",
+      "purposes": [
+        "equip"
+      ],
+      "maxAmount": 200000000,
+      "deadline": "2026-11-24T13:00",
+      "maxEmployees": null,
+      "summary": "製品やサービスの質を高めたり、生産能力を広げたりするための機械設備の導入費用を助成します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003rLvpUAE"
+    },
+    {
+      "title": "ものづくり・商業・サービス生産性向上促進補助金（23次締切）",
+      "org": "国",
+      "purposes": [
+        "equip",
+        "it",
+        "start"
+      ],
+      "maxAmount": null,
+      "deadline": null,
+      "maxEmployees": null,
+      "summary": "新しいサービスや試作品の開発、生産の仕組みの改善に必要な設備投資を支援します。NPO法人も対象です。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDdtMMAT"
+    },
+    {
+      "title": "小規模事業者持続化補助金〈創業型〉（第4回）",
+      "org": "国",
+      "purposes": [
+        "start",
+        "sales"
+      ],
+      "maxAmount": 2000000,
+      "deadline": "2026-12-15T17:00",
+      "maxEmployees": 20,
+      "summary": "創業して間もない小規模事業者の、販路開拓などの取り組みを支援します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003kEuHUAU"
+    },
+    {
+      "title": "中小企業成長加速化補助金（3次公募）",
+      "org": "国",
+      "purposes": [
+        "equip"
+      ],
+      "maxAmount": 500000000,
+      "deadline": "2026-11-12T15:00",
+      "maxEmployees": null,
+      "summary": "大きく成長を目指す中小企業の、大規模な設備投資を支援します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDdjfMAD"
+    },
+    {
+      "title": "展示会出展助成事業",
+      "org": "東京都",
+      "purposes": [
+        "sales"
+      ],
+      "maxAmount": 1500000,
+      "deadline": "2026-11-16T16:00",
+      "maxEmployees": null,
+      "summary": "展示会に出展して販路を広げるための費用を助成します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDXkTMAX"
+    },
+    {
+      "title": "製品開発着手支援助成事業",
+      "org": "東京都",
+      "purposes": [
+        "start"
+      ],
+      "maxAmount": 1000000,
+      "deadline": "2026-11-18T17:00",
+      "maxEmployees": null,
+      "summary": "新しい製品の開発に取りかかるための費用を助成します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDaSdMAL"
+    },
+    {
+      "title": "海外商標対策支援助成事業",
+      "org": "東京都",
+      "purposes": [
+        "sales"
+      ],
+      "maxAmount": 5000000,
+      "deadline": "2026-12-01T17:00",
+      "maxEmployees": 300,
+      "summary": "海外で自社の商標を守るための対策費用を助成します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDYR2MAP"
+    },
+    {
+      "title": "事業承継支援助成金（第3回）",
+      "org": "東京都",
+      "purposes": [
+        "succession"
+      ],
+      "maxAmount": 2000000,
+      "deadline": "2026-12-15T17:00",
+      "maxEmployees": 300,
+      "summary": "事業の引き継ぎに取り組む中小企業の費用を助成します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003ao2zUAA"
+    },
+    {
+      "title": "事業承継を契機とした成長支援事業（販路開拓コース・第2回）",
+      "org": "東京都",
+      "purposes": [
+        "succession",
+        "sales"
+      ],
+      "maxAmount": 3000000,
+      "deadline": "2026-11-12T16:00",
+      "maxEmployees": null,
+      "summary": "事業を引き継いだことをきっかけに、販路を広げる取り組みを支援します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDdtCMAT"
+    },
+    {
+      "title": "中小企業人材スキルアップ支援事業",
+      "org": "東京都",
+      "purposes": [
+        "people"
+      ],
+      "maxAmount": 2500000,
+      "deadline": "2027-02-28T23:59",
+      "maxEmployees": null,
+      "summary": "従業員の研修など、社員のスキルアップにかかる費用を助成します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDXEmMAP"
+    },
+    {
+      "title": "資格取得サポート助成金",
+      "org": "東京都",
+      "purposes": [
+        "people"
+      ],
+      "maxAmount": 1000000,
+      "deadline": "2027-02-28T23:59",
+      "maxEmployees": null,
+      "summary": "従業員が仕事に役立つ資格を取るための費用を助成します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDXMiMAP"
+    },
+    {
+      "title": "育児・介護との両立のためのテレワーク活用促進奨励金",
+      "org": "東京都",
+      "purposes": [
+        "people",
+        "it"
+      ],
+      "maxAmount": 300000,
+      "deadline": "2027-02-26T23:59",
+      "maxEmployees": 300,
+      "summary": "育児や介護と仕事を両立できるよう、テレワークを取り入れる企業を支援します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDap3MAD"
+    },
+    {
+      "title": "ES（社員満足度）向上による若手人材確保・定着事業助成金（1年目申請用）",
+      "org": "東京都",
+      "purposes": [
+        "people"
+      ],
+      "maxAmount": 3000000,
+      "deadline": null,
+      "maxEmployees": 300,
+      "summary": "社員が働き続けたくなる職場づくりで、若手の採用と定着に取り組む企業を支援します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDYkAMAX"
+    },
+    {
+      "title": "中東情勢による原材料価格高騰に伴う経営基盤安定化緊急対策事業（第3回）",
+      "org": "東京都",
+      "purposes": [
+        "cost"
+      ],
+      "maxAmount": 20000000,
+      "deadline": "2026-11-30T16:00",
+      "maxEmployees": null,
+      "summary": "原材料の値上がりの影響を受けた中小企業の、経営を安定させる取り組みを支援します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003ohEXUAY"
+    },
+    {
+      "title": "東京都商店街防災力向上緊急支援事業",
+      "org": "東京都",
+      "purposes": [
+        "area"
+      ],
+      "maxAmount": 300000,
+      "deadline": "2026-11-30T23:59",
+      "maxEmployees": null,
+      "summary": "商店街が防災の備蓄品や防災マップを用意する費用を、上限30万円まで全額補助します。申請は区市町村の商店街振興の窓口へ。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WfQ000003ot1BUAQ"
+    },
+    {
+      "title": "観光関連事業者のDX・経営力強化支援事業補助金（第2回）",
+      "org": "東京都",
+      "purposes": [
+        "it"
+      ],
+      "maxAmount": 30000000,
+      "deadline": "2026-11-30T23:59",
+      "maxEmployees": null,
+      "summary": "観光に関わる事業者の、デジタル化と経営力の強化を支援します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDeYeMAL"
+    },
+    {
+      "title": "生産性向上DX支援事業（小平市）",
+      "org": "小平市",
+      "purposes": [
+        "it"
+      ],
+      "maxAmount": 500000,
+      "deadline": "2026-12-25T23:59",
+      "maxEmployees": null,
+      "summary": "小平市内の中小企業が、POSレジや会計・勤怠・在庫管理のシステムを入れる費用の5分の4を助成します。",
+      "url": "https://j-net21.smrj.go.jp/snavi/articles/191177"
+    }
+  ]
+}
