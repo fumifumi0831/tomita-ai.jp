@@ -1,0 +1,199 @@
+---
+layout: default
+title: 東京の補助金・助成金さがし｜富田AIデジタル活用支援事務所
+description: やりたいことと従業員数を選ぶだけで、東京都内の中小企業・個人事業主が使える国と東京都の補助金・助成金を、締切の近い順に一覧できます。
+---
+
+<style>
+.sb-chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;border:0}
+.sb-chip{position:relative}
+.sb-chip input{position:absolute;opacity:0;width:1px;height:1px}
+.sb-chip span{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid #C9D6CF;border-radius:22px;background:#FFFFFF;font-size:16px;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.sb-chip input:checked+span{background:#2F5D50;border-color:#2F5D50;color:#FFFFFF;font-weight:700}
+.sb-chip input:focus-visible+span{outline:3px solid #9DC3B4;outline-offset:2px}
+.sb-select{min-height:46px;padding:0 14px;border:1px solid #C9D6CF;border-radius:10px;background:#FFFFFF;font:inherit;font-size:16px;color:#23282A;max-width:100%}
+.sb-card{background:#FFFFFF;border:1px solid #DCE3DE;border-radius:16px;padding:24px 26px;display:flex;flex-direction:column;gap:10px}
+.sb-card.is-closed{opacity:.5}
+.sb-meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.sb-tag{font-size:13px;font-weight:700;border-radius:10px;padding:0 10px;line-height:1.9}
+.sb-tag.org{background:#EEF3F0;color:#2F5D50}
+.sb-tag.soon{background:#FBE9E3;color:#A23B1B}
+.sb-tag.open{background:#EEF3F0;color:#2F5D50}
+.sb-facts{display:flex;flex-wrap:wrap;gap:4px 24px;font-size:15px;color:#4A5250;font-variant-numeric:tabular-nums}
+.sb-facts b{color:#23282A}
+</style>
+
+<main>
+<section>
+<div style="max-width: 1120px; margin: 0 auto; padding: 56px 24px 48px; display: flex; flex-direction: column; gap: 32px">
+<p style="margin: 0; font-size: 15px; color: #5C6461"><a href="/">トップ</a> ／ <a href="/check.html">無料チェック</a> ／ 補助金・助成金さがし</p>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 15px; font-weight: 700; color: #2F5D50">無料チェック｜試作版</p>
+<h1 style="margin: 0; font-size: clamp(28px, 4.6vw, 40px); line-height: 1.5; font-weight: 700; text-wrap: balance">東京の補助金・助成金さがし</h1>
+<p style="margin: 0; font-size: 18px; color: #4A5250; max-width: 680px">やりたいことと従業員数を選ぶと、東京都内の中小企業・個人事業主が使える国と東京都の制度を、締切の近い順に並べます。公式サイトで迷子になる前の、最初の当たりづけに使ってください。</p>
+</div>
+</div>
+</section>
+
+<section style="background: #F6F7F5">
+<div style="max-width: 1120px; margin: 0 auto; padding: 48px 24px 72px; display: flex; flex-direction: column; gap: 28px">
+<form id="sb-form" style="display: flex; flex-direction: column; gap: 24px">
+<fieldset style="margin: 0; padding: 0; border: 0; display: flex; flex-direction: column; gap: 12px">
+<legend style="padding: 0; margin-bottom: 12px; font-size: 18px; font-weight: 700">やりたいこと（いくつでも）</legend>
+<div class="sb-chips" id="sb-purposes"></div>
+</fieldset>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<label for="sb-size" style="font-size: 18px; font-weight: 700">従業員数</label>
+<select id="sb-size" class="sb-select">
+<option value="0">指定しない</option>
+<option value="5">5人以下</option>
+<option value="20">20人以下</option>
+<option value="300">300人以下</option>
+<option value="301">301人以上</option>
+</select>
+</div>
+</form>
+
+<div style="display: flex; flex-direction: column; gap: 14px">
+<p id="sb-count" style="margin: 0; font-size: 16px; font-weight: 700" aria-live="polite"></p>
+<ul id="sb-list" style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px"></ul>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: #5C6461; max-width: 760px">
+<p style="margin: 0">2026年11月7日時点の情報をもとにした試作版です。締切や金額、対象の細かい条件は変わることがあるため、申請の前に必ず公式の詳細ページで確かめてください。区市町村が独自に行っている制度は、お住まいの区市町村の窓口でも確認できます。</p>
+<p style="margin: 0">出典：<a href="https://www.jgrants-portal.go.jp/" target="_blank" rel="noopener">Jグランツ（jGrants）</a>、<a href="https://j-net21.smrj.go.jp/" target="_blank" rel="noopener">J-Net21</a>（中小企業基盤整備機構）</p>
+</div>
+</div>
+</section>
+
+<section>
+<div style="max-width: 1120px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center">
+<h2 style="margin: 0; font-size: 26px; font-weight: 700">どれが合うか、一緒に考えます</h2>
+<p style="margin: 0; font-size: 17px; color: #4A5250; max-width: 600px">制度は見つかっても、自分たちが対象になるのか、何から準備すればいいのかで止まりがちです。初回のご相談は無料です。</p>
+<a href="https://forms.gle/3riH2FEBzJ8SkmK79" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 36px; background: #2F5D50; color: #FFFFFF; border-radius: 28px; text-decoration: none; font-size: 18px; font-weight: 700">フォームで相談する</a>
+</div>
+</section>
+</main>
+
+<script>
+(function () {
+  var PURPOSES = [
+    ['it', 'ITやデジタルを取り入れたい'],
+    ['equip', '設備や機械を入れたい'],
+    ['sales', '販路を広げたい・売上を伸ばしたい'],
+    ['start', '新しい商品や事業を始めたい'],
+    ['people', '人を育てたい・働きやすくしたい'],
+    ['succession', '事業を引き継ぎたい'],
+    ['cost', '原材料の値上がりに困っている'],
+    ['area', '商店街・地域で取り組みたい']
+  ];
+  var JG = 'https://www.jgrants-portal.go.jp/subsidy/';
+  // end: 締切（日本時間）。null は「公式サイトで確認」。maxEmp: 従業員数の上限（null は制限なし）
+  var DATA = [
+    { t: '中小企業デジタル導入促進補助事業（第2回）', org: '東京都', p: ['it'], max: 1500000, end: '2027-01-29T23:59', maxEmp: null,
+      s: 'デジタルツールを新しく導入する費用の一部を助成します。会社のほか個人事業主も対象です。', u: JG + 'a0WfQ000003ZH5uUAG' },
+    { t: '経営力強化に向けた創意工夫チャレンジ促進事業（業務改善コース・第3回）', org: '東京都', p: ['it', 'equip', 'sales'], max: 6000000, end: '2026-11-13T16:00', maxEmp: null,
+      s: '今の事業を深めて発展させる計画を作ると、審査で認められた経費が助成されます。個人事業主も対象です。', u: JG + 'a0WfQ000003pt0jUAA' },
+    { t: '躍進的な事業推進のための設備投資支援事業（第14回）', org: '東京都', p: ['equip'], max: 200000000, end: '2026-11-24T13:00', maxEmp: null,
+      s: '製品やサービスの質を高めたり、生産能力を広げたりするための機械設備の導入費用を助成します。', u: JG + 'a0WfQ000003rLvpUAE' },
+    { t: 'ものづくり・商業・サービス生産性向上促進補助金（23次締切）', org: '国', p: ['equip', 'it', 'start'], max: null, end: null, maxEmp: null,
+      s: '新しいサービスや試作品の開発、生産の仕組みの改善に必要な設備投資を支援します。NPO法人も対象です。', u: JG + 'a0WJ200000CDdtMMAT' },
+    { t: '小規模事業者持続化補助金〈創業型〉（第4回）', org: '国', p: ['start', 'sales'], max: 2000000, end: '2026-12-15T17:00', maxEmp: 20,
+      s: '創業して間もない小規模事業者の、販路開拓などの取り組みを支援します。', u: JG + 'a0WfQ000003kEuHUAU' },
+    { t: '中小企業成長加速化補助金（3次公募）', org: '国', p: ['equip'], max: 500000000, end: '2026-11-12T15:00', maxEmp: null,
+      s: '大きく成長を目指す中小企業の、大規模な設備投資を支援します。', u: JG + 'a0WJ200000CDdjfMAD' },
+    { t: '展示会出展助成事業', org: '東京都', p: ['sales'], max: 1500000, end: '2026-11-16T16:00', maxEmp: null,
+      s: '展示会に出展して販路を広げるための費用を助成します。', u: JG + 'a0WJ200000CDXkTMAX' },
+    { t: '製品開発着手支援助成事業', org: '東京都', p: ['start'], max: 1000000, end: '2026-11-18T17:00', maxEmp: null,
+      s: '新しい製品の開発に取りかかるための費用を助成します。', u: JG + 'a0WJ200000CDaSdMAL' },
+    { t: '海外商標対策支援助成事業', org: '東京都', p: ['sales'], max: 5000000, end: '2026-12-01T17:00', maxEmp: 300,
+      s: '海外で自社の商標を守るための対策費用を助成します。', u: JG + 'a0WJ200000CDYR2MAP' },
+    { t: '事業承継支援助成金（第3回）', org: '東京都', p: ['succession'], max: 2000000, end: '2026-12-15T17:00', maxEmp: 300,
+      s: '事業の引き継ぎに取り組む中小企業の費用を助成します。', u: JG + 'a0WfQ000003ao2zUAA' },
+    { t: '事業承継を契機とした成長支援事業（販路開拓コース・第2回）', org: '東京都', p: ['succession', 'sales'], max: 3000000, end: '2026-11-12T16:00', maxEmp: null,
+      s: '事業を引き継いだことをきっかけに、販路を広げる取り組みを支援します。', u: JG + 'a0WJ200000CDdtCMAT' },
+    { t: '中小企業人材スキルアップ支援事業', org: '東京都', p: ['people'], max: 2500000, end: '2027-02-28T23:59', maxEmp: null,
+      s: '従業員の研修など、社員のスキルアップにかかる費用を助成します。', u: JG + 'a0WJ200000CDXEmMAP' },
+    { t: '資格取得サポート助成金', org: '東京都', p: ['people'], max: 1000000, end: '2027-02-28T23:59', maxEmp: null,
+      s: '従業員が仕事に役立つ資格を取るための費用を助成します。', u: JG + 'a0WJ200000CDXMiMAP' },
+    { t: '育児・介護との両立のためのテレワーク活用促進奨励金', org: '東京都', p: ['people', 'it'], max: 300000, end: '2027-02-26T23:59', maxEmp: 300,
+      s: '育児や介護と仕事を両立できるよう、テレワークを取り入れる企業を支援します。', u: JG + 'a0WJ200000CDap3MAD' },
+    { t: 'ES（社員満足度）向上による若手人材確保・定着事業助成金（1年目申請用）', org: '東京都', p: ['people'], max: 3000000, end: null, maxEmp: 300,
+      s: '社員が働き続けたくなる職場づくりで、若手の採用と定着に取り組む企業を支援します。', u: JG + 'a0WJ200000CDYkAMAX' },
+    { t: '中東情勢による原材料価格高騰に伴う経営基盤安定化緊急対策事業（第3回）', org: '東京都', p: ['cost'], max: 20000000, end: '2026-11-30T16:00', maxEmp: null,
+      s: '原材料の値上がりの影響を受けた中小企業の、経営を安定させる取り組みを支援します。', u: JG + 'a0WfQ000003ohEXUAY' },
+    { t: '東京都商店街防災力向上緊急支援事業', org: '東京都', p: ['area'], max: 300000, end: '2026-11-30T23:59', maxEmp: null,
+      s: '商店街が防災の備蓄品や防災マップを用意する費用を、上限30万円まで全額補助します。申請は区市町村の商店街振興の窓口へ。', u: JG + 'a0WfQ000003ot1BUAQ' },
+    { t: '観光関連事業者のDX・経営力強化支援事業補助金（第2回）', org: '東京都', p: ['it'], max: 30000000, end: '2026-11-30T23:59', maxEmp: null,
+      s: '観光に関わる事業者の、デジタル化と経営力の強化を支援します。', u: JG + 'a0WJ200000CDeYeMAL' },
+    { t: '生産性向上DX支援事業（小平市）', org: '小平市', p: ['it'], max: 500000, end: '2026-12-25T23:59', maxEmp: null,
+      s: '小平市内の中小企業が、POSレジや会計・勤怠・在庫管理のシステムを入れる費用の5分の4を助成します。', u: 'https://j-net21.smrj.go.jp/snavi/articles/191177' }
+  ];
+
+  var box = document.getElementById('sb-purposes');
+  PURPOSES.forEach(function (p) {
+    var label = document.createElement('label');
+    label.className = 'sb-chip';
+    label.innerHTML = '<input type="checkbox" id="sb-p-' + p[0] + '" value="' + p[0] + '"><span>' + p[1] + '</span>';
+    box.appendChild(label);
+  });
+
+  function yen(n) {
+    if (!n) return '枠により異なる';
+    if (n >= 100000000) return (n / 100000000) + '億円';
+    return (n / 10000).toLocaleString('ja-JP') + '万円';
+  }
+  function fmtDate(d) {
+    return (d.getMonth() + 1) + '月' + d.getDate() + '日';
+  }
+
+  function render() {
+    var picked = [].slice.call(box.querySelectorAll('input:checked')).map(function (i) { return i.value; });
+    var size = parseInt(document.getElementById('sb-size').value, 10);
+    var now = new Date();
+    var rows = DATA.filter(function (d) {
+      if (picked.length && !d.p.some(function (x) { return picked.indexOf(x) >= 0; })) return false;
+      if (size && d.maxEmp !== null && (size === 301 || size > d.maxEmp)) return false;
+      return true;
+    }).map(function (d) {
+      var end = d.end ? new Date(d.end + ':00+09:00') : null;
+      var days = end ? Math.ceil((end - now) / 86400000) : null;
+      return { d: d, end: end, days: days, closed: end !== null && end < now };
+    }).sort(function (a, b) {
+      if (a.closed !== b.closed) return a.closed ? 1 : -1;
+      if (!a.end) return 1;
+      if (!b.end) return -1;
+      return a.end - b.end;
+    });
+
+    var open = rows.filter(function (r) { return !r.closed; }).length;
+    document.getElementById('sb-count').textContent = '受付中 ' + open + '件' + (rows.length > open ? '（締切を過ぎたもの ' + (rows.length - open) + '件）' : '');
+
+    var list = document.getElementById('sb-list');
+    list.innerHTML = '';
+    rows.forEach(function (r) {
+      var d = r.d;
+      var li = document.createElement('li');
+      li.className = 'sb-card' + (r.closed ? ' is-closed' : '');
+      var deadline = r.closed ? '締切を過ぎました'
+        : r.end ? fmtDate(r.end) + '締切'
+        : '締切は公式サイトで確認';
+      var badge = r.closed ? ''
+        : r.days !== null && r.days <= 14 ? '<span class="sb-tag soon">あと' + Math.max(r.days, 0) + '日</span>'
+        : '';
+      li.innerHTML =
+        '<div class="sb-meta"><span class="sb-tag org">' + d.org + '</span>' + badge + '</div>' +
+        '<h3 style="margin: 0; font-size: 18px; font-weight: 700; line-height: 1.6">' + d.t + '</h3>' +
+        '<p style="margin: 0; font-size: 16px; color: #4A5250">' + d.s + '</p>' +
+        '<div class="sb-facts"><span>上限 <b>' + yen(d.max) + '</b></span><span>' + deadline + '</span>' +
+        (d.maxEmp ? '<span>従業員' + d.maxEmp + '人以下</span>' : '') + '</div>' +
+        '<a href="' + d.u + '" target="_blank" rel="noopener" style="align-self: flex-start; font-size: 16px; font-weight: 700">公式の詳細を見る →</a>';
+      list.appendChild(li);
+    });
+  }
+
+  document.getElementById('sb-form').addEventListener('change', render);
+  document.getElementById('sb-form').addEventListener('submit', function (e) { e.preventDefault(); });
+  render();
+})();
+</script>
