@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 売上の流れチェック｜富田AIデジタル活用支援事務所
-description: いくつかの質問に答えると、お店の売上の流れのどこが細くなっているかと、そこを太くする一手、売上の伸びしろの目安が分かる無料チェック（試作版）です。
+description: いくつかの質問に答えると、お店や会社の売上の流れのどこが細くなっているかと、そこを太くする一手、売上の伸びしろの目安が分かる無料チェック（試作版）です。
 ---
 
 <style>
@@ -27,7 +27,7 @@ description: いくつかの質問に答えると、お店の売上の流れの�
 <div style="display: flex; flex-direction: column; gap: 16px">
 <p style="margin: 0; font-size: 15px; font-weight: 700; color: #2F5D50">無料チェック｜試作版</p>
 <h1 style="margin: 0; font-size: clamp(28px, 4.6vw, 40px); line-height: 1.5; font-weight: 700; text-wrap: balance">売上の流れチェック</h1>
-<p style="margin: 0; font-size: 18px; color: #4A5250; max-width: 680px">お客さまに見つけてもらい、予約してもらい、また来てもらうまでの流れの中で、どこが細くなっているかを確かめます。8つの質問に答えると、一番細いところと、そこを太くする一手が分かります。3分ほどです。</p>
+<p style="margin: 0; font-size: 18px; color: #4A5250; max-width: 680px">お客さまや取引先に見つけてもらい、選んでもらい、続けてもらうまでの流れの中で、どこが細くなっているかを確かめます。7つの質問に答えると、一番細いところと、そこを太くする一手が分かります。3分ほどです。</p>
 </div>
 <div role="note" style="display: flex; flex-direction: column; gap: 4px; max-width: 760px; background: #FFF7E6; border: 1px solid #F0D9A8; border-radius: 12px; padding: 16px 20px">
 <p style="margin: 0; font-size: 16px; font-weight: 700; color: #6B4A0E">試作版です</p>
@@ -44,6 +44,20 @@ description: いくつかの質問に答えると、お店の売上の流れの�
 </section>
 
 <section>
+<div style="max-width: 1120px; margin: 0 auto; padding: 72px 24px 0; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
+<h2 style="margin: 0; font-size: 26px; font-weight: 700">判定の仕組み</h2>
+<ul style="margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; color: #4A5250">
+<li>各質問の4つの選択肢は、お客さまや取引先の側から見て、手間や不安が少なく、取りこぼしが起きにくい順に並べています。上から0点、1点、2点、3点です。</li>
+<li>6つの場面を同じ重さで比べ、点数が一番低い場面を「一番細い」とします。同じ点数なら、流れの前のほうを選びます。前が細いと、後ろの場面まで人が流れてこないためです。</li>
+<li>売上の伸びしろは、「事務の時間 × 減らせる割合 ÷ 1件の時間 × 単価 × 実際の仕事になる割合 × 4週」で出しています。事務のために仕事を断ることがない場合は、浮いた時間が売上になりにくいため、金額は出しません。</li>
+</ul>
+<p style="margin: 0; font-size: 16px; font-weight: 700; color: #2F5D50">選択肢の並べ方、点数の付け方、割合の数字は、調査で裏付けたものではなく、この事務所の目安です。業種によって場面の重さは変わるため、実際にお店や会社に試していただきながら直していきます。</p>
+</div>
+</div>
+</section>
+
+<section>
 <div style="max-width: 1120px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center">
 <h2 style="margin: 0; font-size: 26px; font-weight: 700">結果をもとに、一緒に考えます</h2>
 <p style="margin: 0; font-size: 17px; color: #4A5250; max-width: 600px">一手をどう始めるか、お店に合ったやり方はどれかを、今の状況を伺いながら一緒に決めます。初回のご相談は無料です。</p>
@@ -56,106 +70,156 @@ description: いくつかの質問に答えると、お店の売上の流れの�
 (function () {
   // 「減らせる割合」「空いた枠が埋まる割合」は事務所の目安
   var CUT_RATE = 0.5, FILL_RATE = 0.5, WEEKS = 4;
-  var SCENES = [
-    { key: 'find', name: '見つけてもらう', effect: '新しいお客さまの数',
-      q: 'お店の名前や地域名で検索すると、お店の情報は出てきますか？',
-      opts: ['出てこない、または分からない', '出てくるが、営業時間や写真が古い', '出てきて、内容も最新', '出てきて、口コミにも返事をしている'],
-      step: 'Googleのお店の情報（ビジネスプロフィール）を整え、写真と営業時間を最新にして、月1回の更新日を決めましょう。' },
-    { key: 'book', name: '予約・問い合わせ', effect: '来てくれる割合',
-      q: '予約や問い合わせは、どうやって受けていますか？',
-      opts: ['電話か来店のときだけ', '電話のほか、メールやSNSのメッセージでも受けている', 'ネット予約やLINEで、営業時間外も受けている', '予約から確認の連絡まで、ほとんど自動で回っている'],
-      step: '無料の予約ツールか、LINE公式アカウントを1つ置き、営業時間外や手が離せないときの取りこぼしを減らしましょう。' },
-    { key: 'choose', name: '選んでもらう', effect: '来てくれる割合と客単価',
-      q: '初めてのお客さまが、料金や支払い方法を事前に知ることができますか？',
-      opts: ['聞かれたら答えている', 'お店の中には書いてあるが、ネットにはない', 'ネットでも料金が分かり、キャッシュレスでも払える', 'よくある質問への答えもあり、問い合わせへの返事も早い'],
-      step: '料金とよくある質問を1ページにまとめ、キャッシュレス払いを入れて、迷っている人の背中を押しましょう。' },
-    { key: 'repeat', name: 'また来てもらう', effect: '来てくれる回数',
-      q: '一度来たお客さまに、こちらから連絡できますか？',
-      opts: ['連絡先は分からない', '紙の台帳や名刺はあるが、連絡はほとんどしない', '名簿やLINEがあり、ときどきお知らせを送っている', '次回の予約や季節のお知らせを、決まった時期に届けている'],
-      step: '来店のときに、次回の予約かLINEの登録をお願いし、季節ごとのお知らせを届ける仕組みを作りましょう。' },
-    { key: 'time', name: '売上につながる時間', effect: '受けられる件数',
-      q: '電話受けや予約管理、請求などの事務に追われて、予約を断ったり受ける枠を減らしたりすることはありますか？',
-      opts: ['よくある', 'たまにある', 'ほとんどない。事務は回っている', 'ない。事務はほぼ自動で、浮いた時間を新しいメニューなどに使っている'],
-      step: '予約・会計・請求の二重入力をなくし、事務の時間を接客の枠に回しましょう。' },
-    { key: 'trust', name: '信頼を守る', effect: '失わずに済む売上と信用',
-      q: 'お客さまの名簿やパスワードの扱いについて、決まりはありますか？',
-      opts: ['特にない。パスワードは使い回しや共有をしている', 'ウイルス対策などはしているが、決まりはない', '名簿やパスワードの扱いと、AIに入れてよい情報を決めている', '決まりを紙にして、お客さまに聞かれても説明できる'],
-      step: 'お客さまの情報の置き場、パスワード、AIに入れてよい情報を、1枚のルールにまとめましょう。',
-      link: { href: '/check-url.html', text: 'このリンク、開いて大丈夫？チェック' } }
-  ];
+  var TIME_INDEX = 4; // 「時間」の場面の位置（予約・注文を断るかの見分けに使う）
+  var SETS = {
+    person: {
+      nums: { price: '客単価（円）', pricePh: '5000', unit: 'mins', size: '1件にかかる時間（分）', sizePh: '60', admin: '電話受けや予約管理、請求などの事務の時間（週・時間）', adminPh: '5' },
+      scenes: [
+        { name: '見つけてもらう', effect: '新しいお客さまの数',
+          q: 'お店の名前や地域名で検索すると、お店の情報は出てきますか？',
+          opts: ['出てこない、または分からない', '出てくるが、営業時間や写真が古い', '出てきて、内容も最新', '出てきて、口コミにも返事をしている'],
+          step: 'Googleのお店の情報（ビジネスプロフィール）を整え、写真と営業時間を最新にして、月1回の更新日を決めましょう。' },
+        { name: '予約・問い合わせ', effect: '来てくれる割合',
+          q: '予約や問い合わせは、どうやって受けていますか？',
+          opts: ['電話か来店のときだけ', '電話のほか、メールやSNSのメッセージでも受けている', 'ネット予約やLINEで、営業時間外も受けている', '予約から確認の連絡まで、ほとんど自動で回っている'],
+          step: '無料の予約ツールか、LINE公式アカウントを1つ置き、営業時間外や手が離せないときの取りこぼしを減らしましょう。' },
+        { name: '選んでもらう', effect: '来てくれる割合と客単価',
+          q: '初めてのお客さまが、料金や支払い方法を事前に知ることができますか？',
+          opts: ['聞かれたら答えている', 'お店の中には書いてあるが、ネットにはない', 'ネットでも料金が分かり、キャッシュレスでも払える', 'よくある質問への答えもあり、問い合わせへの返事も早い'],
+          step: '料金とよくある質問を1ページにまとめ、キャッシュレス払いを入れて、迷っている人の背中を押しましょう。' },
+        { name: 'また来てもらう', effect: '来てくれる回数',
+          q: '一度来たお客さまに、こちらから連絡できますか？',
+          opts: ['連絡先は分からない', '紙の台帳や名刺はあるが、連絡はほとんどしない', '名簿やLINEがあり、ときどきお知らせを送っている', '次回の予約や季節のお知らせを、決まった時期に届けている'],
+          step: '来店のときに、次回の予約かLINEの登録をお願いし、季節ごとのお知らせを届ける仕組みを作りましょう。' },
+        { name: '売上につながる時間', effect: '受けられる件数',
+          q: '電話受けや予約管理、請求などの事務に追われて、予約を断ったり受ける枠を減らしたりすることはありますか？',
+          opts: ['よくある', 'たまにある', 'ほとんどない。事務は回っている', 'ない。事務はほぼ自動で、浮いた時間を新しいメニューなどに使っている'],
+          step: '予約・会計・請求の二重入力をなくし、事務の時間を接客の枠に回しましょう。' },
+        { name: '信頼を守る', effect: '失わずに済む売上と信用',
+          q: 'お客さまの名簿やパスワードの扱いについて、決まりはありますか？',
+          opts: ['特にない。パスワードは使い回しや共有をしている', 'ウイルス対策などはしているが、決まりはない', '名簿やパスワードの扱いと、AIに入れてよい情報を決めている', '決まりを紙にして、お客さまに聞かれても説明できる'],
+          step: 'お客さまの情報の置き場、パスワード、AIに入れてよい情報を、1枚のルールにまとめましょう。',
+          link: { href: '/check-url.html', text: 'このリンク、開いて大丈夫？チェック' } }
+      ]
+    },
+    company: {
+      nums: { price: '1件の平均の受注額（円）', pricePh: '300000', unit: 'hours', size: '1件にかかる作業時間（時間）', sizePh: '20', admin: '見積もりや受発注、請求などの事務の時間（週・時間）', adminPh: '10' },
+      scenes: [
+        { name: '見つけてもらう', effect: '新しい取引先からの問い合わせの数',
+          q: '会社名やサービス名で検索すると、会社の情報や実績は出てきますか？',
+          opts: ['出てこない、または分からない', '会社概要は出てくるが、内容が古い', 'できることと実績が載っていて、内容も最新', '事例や記事から、問い合わせにつながっている'],
+          step: 'ホームページに、できることと実績（取引先の業種や事例）を載せ、年に数回更新する時期を決めましょう。' },
+        { name: '問い合わせしてもらう', effect: '商談になる割合',
+          q: '新しい問い合わせは、どうやって受けて、誰が返事をしていますか？',
+          opts: ['電話や代表のメールだけで、返事は気づいた人まかせ', '問い合わせのフォームはあるが、返事の担当や期限は決めていない', 'フォームと担当が決まっていて、その日のうちに返事をしている', '問い合わせから商談までの記録が残り、取りこぼしが分かる'],
+          step: '問い合わせのフォームと担当者を決め、その日のうちに一次返事をする決まりを作りましょう。' },
+        { name: '見積もり・提案', effect: '受注になる割合',
+          q: '見積もりを出すまでに、どれくらいかかりますか？',
+          opts: ['1週間以上かかる。作れるのは特定の担当者だけ', '数日かかる。Excelのひな形はある', '当日か翌日に出せる。ひな形と単価表があり、誰でも作れる', '過去の見積もりや受注の記録を見て、提案や価格を決めている'],
+          step: '見積もりのひな形と単価表を整え、担当者以外も作れるようにして、返事の速さで選ばれるようにしましょう。' },
+        { name: '続けて取引してもらう', effect: '取引の回数と期間',
+          q: '今の取引先とは、どのように関係を続けていますか？',
+          opts: ['注文が来るのを待っている', '担当者が覚えているが、こちらからの定期的な連絡はない', '取引先の一覧と履歴があり、定期的に連絡している', '履歴から次の注文の時期を読んで、こちらから提案している'],
+          step: '取引先の一覧と過去の注文を1か所にまとめ、注文が途切れそうな相手に連絡する時期を決めましょう。' },
+        { name: '受けられる仕事の量', effect: '受けられる件数',
+          q: '見積もりや受発注、請求などの事務に追われて、仕事を断ったり納期を延ばしたりすることはありますか？',
+          opts: ['よくある', 'たまにある', 'ほとんどない。事務は回っている', 'ない。事務はほぼ自動で、浮いた時間を営業や改善に使っている'],
+          step: '見積もり・受発注・請求の二重入力をなくし、事務の時間を本業や営業に回しましょう。' },
+        { name: '信頼を守る', effect: '取引の継続と新しい取引',
+          q: '取引先から、情報の管理について聞かれたら説明できますか？',
+          opts: ['説明できない。パスワードの使い回しや共有もある', 'ウイルス対策などはしているが、社内の決まりはない', '情報の扱いとAIの使い方の決まりがあり、社員に伝えている', '決まりを書面にしていて、取引先の求めにも応じられる'],
+          step: '情報の扱い、パスワード、AIに入れてよい情報を1枚のルールにして、取引先に説明できるようにしましょう。',
+          link: { href: '/services/security.html', text: '情報の守り方のご相談' } }
+      ]
+    }
+  };
 
   var form = document.getElementById('sc-form');
-  var html = '';
-  html += '<fieldset class="sc-q"><span class="sc-scene">はじめに</span><legend>お客さまは、主に個人ですか、会社ですか？</legend>' +
-    opt('who', 'person', '主に個人（お店やサービスを使う一人ひとりのお客さま）', true) +
-    opt('who', 'company', '主に会社（取引先の企業）') +
-    '<p id="sc-company" hidden style="margin:0;font-size:15px;color:#6B4A0E">会社のお客さま向けの質問は準備中です。このまま進めることもできますが、言葉が合わない部分があります。</p></fieldset>';
-  SCENES.forEach(function (s, i) {
-    html += '<fieldset class="sc-q"><span class="sc-scene">' + (i + 1) + '／' + SCENES.length + '　' + s.name + '</span><legend>' + s.q + '</legend>' +
-      s.opts.map(function (o, j) { return opt(s.key, String(j), o); }).join('') + '</fieldset>';
-  });
-  html += '<fieldset class="sc-q"><span class="sc-scene">任意</span><legend>数字を入れると、売上の伸びしろの目安を出します</legend>' +
-    '<div style="display:flex;flex-wrap:wrap;gap:12px">' +
-    num('price', '客単価（円）', '5000') + num('mins', '1件にかかる時間（分）', '60') + num('admin', '電話受けや事務の時間（週・時間）', '5') +
-    '</div></fieldset>';
-  html += '<div><button type="submit" class="sc-btn">結果を見る</button></div>';
-  form.innerHTML = html;
-
   function opt(name, value, label, checked) {
     var id = 'sc-' + name + '-' + value;
     return '<label class="sc-opt" for="' + id + '"><input type="radio" id="' + id + '" name="' + name + '" value="' + value + '"' + (checked ? ' checked' : '') + '><span>' + label + '</span></label>';
   }
   function num(id, label, ph) {
-    return '<label class="sc-num" for="sc-' + id + '"><span style="font-size:15px;font-weight:700">' + label + '</span><input type="number" inputmode="numeric" min="0" id="sc-' + id + '" placeholder="例）' + ph + '"></label>';
+    return '<label class="sc-num" for="sc-' + id + '"><span style="font-size:15px;font-weight:700" id="sc-' + id + '-label">' + label + '</span><input type="number" inputmode="numeric" min="0" id="sc-' + id + '" placeholder="例）' + ph + '"></label>';
   }
+  var html = '<fieldset class="sc-q"><span class="sc-scene">はじめに</span><legend>お客さまは、主に個人ですか、会社ですか？</legend>' +
+    opt('who', 'person', '主に個人（お店やサービスを使う一人ひとりのお客さま）', true) +
+    opt('who', 'company', '主に会社（取引先の企業）') + '</fieldset>';
+  Object.keys(SETS).forEach(function (set) {
+    var scenes = SETS[set].scenes;
+    scenes.forEach(function (s, i) {
+      html += '<fieldset class="sc-q" data-set="' + set + '"' + (set === 'person' ? '' : ' hidden') + '><span class="sc-scene">' + (i + 1) + '／' + scenes.length + '　' + s.name + '</span><legend>' + s.q + '</legend>' +
+        s.opts.map(function (o, j) { return opt(set + '-' + i, String(j), o); }).join('') + '</fieldset>';
+    });
+  });
+  var n0 = SETS.person.nums;
+  html += '<fieldset class="sc-q"><span class="sc-scene">任意</span><legend>数字を入れると、売上の伸びしろの目安を出します</legend>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:12px">' + num('price', n0.price, n0.pricePh) + num('size', n0.size, n0.sizePh) + num('admin', n0.admin, n0.adminPh) + '</div></fieldset>';
+  html += '<div><button type="submit" class="sc-btn">結果を見る</button></div>';
+  form.innerHTML = html;
 
+  function currentSet() {
+    var c = form.querySelector('input[name="who"]:checked');
+    return c ? c.value : 'person';
+  }
   form.addEventListener('change', function (e) {
-    if (e.target.name === 'who') document.getElementById('sc-company').hidden = e.target.value !== 'company';
+    if (e.target.name !== 'who') return;
+    var set = e.target.value;
+    form.querySelectorAll('fieldset[data-set]').forEach(function (f) { f.hidden = f.getAttribute('data-set') !== set; });
+    var n = SETS[set].nums;
+    ['price', 'size', 'admin'].forEach(function (k) {
+      document.getElementById('sc-' + k + '-label').textContent = n[k];
+      document.getElementById('sc-' + k).placeholder = '例）' + n[k + 'Ph'];
+    });
+    document.getElementById('sc-result').innerHTML = '';
   });
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var out = document.getElementById('sc-result');
-    var scores = SCENES.map(function (s) {
-      var c = form.querySelector('input[name="' + s.key + '"]:checked');
+    var set = currentSet();
+    var conf = SETS[set];
+    var scenes = conf.scenes;
+    var scores = scenes.map(function (s, i) {
+      var c = form.querySelector('input[name="' + set + '-' + i + '"]:checked');
       return c ? parseInt(c.value, 10) : null;
     });
     var missing = scores.indexOf(null);
     if (missing >= 0) {
-      out.innerHTML = '<p style="margin:0;font-size:16px;font-weight:700;color:#A23B1B">「' + SCENES[missing].name + '」の質問にまだ答えていません。</p>';
-      form.querySelector('input[name="' + SCENES[missing].key + '"]').focus();
+      out.innerHTML = '<p style="margin:0;font-size:16px;font-weight:700;color:#A23B1B">「' + scenes[missing].name + '」の質問にまだ答えていません。</p>';
+      form.querySelector('input[name="' + set + '-' + missing + '"]').focus();
       return;
     }
     // 一番細い場面：点数が一番低いもの。同点なら流れの前のほう
     var min = Math.min.apply(null, scores);
     var weakest = scores.indexOf(min);
-    var w = SCENES[weakest];
-    var busy = scores[4] <= 1;
+    var w = scenes[weakest];
+    var busy = scores[TIME_INDEX] <= 1;
 
-    var bars = SCENES.map(function (s, i) {
+    var bars = scenes.map(function (s, i) {
       return '<span>' + s.name + '</span><div class="sc-track" role="img" aria-label="' + s.name + '：4段階中' + (scores[i] + 1) + '"><div class="sc-fill' + (i === weakest ? ' weak' : '') + '" style="width:' + ((scores[i] + 1) * 25) + '%"></div></div>';
     }).join('');
 
     var money = '';
     var price = parseFloat(document.getElementById('sc-price').value);
-    var mins = parseFloat(document.getElementById('sc-mins').value);
+    var size = parseFloat(document.getElementById('sc-size').value);
     var admin = parseFloat(document.getElementById('sc-admin').value);
-    if (price > 0 && mins > 0 && admin > 0) {
+    if (price > 0 && size > 0 && admin > 0) {
+      var sizeHours = conf.nums.unit === 'mins' ? size / 60 : size;
       if (busy) {
         var freedH = admin * CUT_RATE;
-        var slots = freedH * 60 / mins;
-        var monthly = Math.round(slots * price * FILL_RATE * WEEKS / 1000) * 1000;
+        var jobs = freedH / sizeHours;
+        var monthly = Math.round(jobs * price * FILL_RATE * WEEKS / 1000) * 1000;
         money = '<div style="background:#FFFFFF;border:1px solid #DCE3DE;border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:8px">' +
           '<p style="margin:0;font-size:15px;font-weight:700;color:#2F5D50">事務の時間を減らしたときの売上の伸びしろ（目安）</p>' +
           '<p style="margin:0;font-size:28px;font-weight:700;font-variant-numeric:tabular-nums">月におよそ ' + monthly.toLocaleString('ja-JP') + ' 円</p>' +
-          '<p style="margin:0;font-size:15px;color:#4A5250">事務の時間を半分にすると週' + freedH.toFixed(1) + '時間が浮き、' + slots.toFixed(1) + '件ぶんの枠が空きます。その半分が埋まり、1か月を4週として計算しました。「半分に減らせる」「半分が埋まる」は、この事務所の目安です。</p></div>';
+          '<p style="margin:0;font-size:15px;color:#4A5250">事務の時間を半分にすると週' + freedH.toFixed(1) + '時間が浮き、' + jobs.toFixed(1) + '件ぶんの仕事を受けられる時間になります。その半分が実際の仕事になり、1か月を4週として計算しました。「半分に減らせる」「半分が仕事になる」は、この事務所の目安です。</p></div>';
       } else {
-        money = '<div style="background:#FFFFFF;border:1px solid #DCE3DE;border-radius:16px;padding:22px 24px"><p style="margin:0;font-size:15px;color:#4A5250">事務のために予約を断ることはほとんどないようなので、時間を減らしてもすぐ売上にはつながりにくいです。お客さまの数を増やす「見つけてもらう」「予約・問い合わせ」を太くするほうが効きます。</p></div>';
+        money = '<div style="background:#FFFFFF;border:1px solid #DCE3DE;border-radius:16px;padding:22px 24px"><p style="margin:0;font-size:15px;color:#4A5250">事務のために仕事を断ることはほとんどないようなので、時間を減らしてもすぐ売上にはつながりにくいです。お客さまを増やす「' + scenes[0].name + '」「' + scenes[1].name + '」を太くするほうが効きます。</p></div>';
       }
     }
 
-    var allStrong = min >= 2;
-    var head = allStrong
+    var head = min >= 2
       ? '<p style="margin:0;font-size:15px;font-weight:700">流れは全体に太くなっています</p><p style="margin:0;font-size:22px;font-weight:700">一番伸ばしやすいのは「' + w.name + '」です</p>'
       : '<p style="margin:0;font-size:15px;font-weight:700">一番細くなっているのは</p><p style="margin:0;font-size:26px;font-weight:700">「' + w.name + '」です</p>';
     out.innerHTML =
