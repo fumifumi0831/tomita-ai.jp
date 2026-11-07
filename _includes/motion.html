@@ -4,6 +4,8 @@
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var targets = [];
   document.querySelectorAll('section:not(#top) > div > *').forEach(function (el) {
+    // 後から中身が入る検索結果などは、動きの対象にしない
+    if (el.matches('[aria-live]') || el.querySelector('[aria-live]')) return;
     if (el.tagName === 'UL' || el.tagName === 'OL') {
       Array.prototype.forEach.call(el.children, function (li, i) {
         li.style.setProperty('--rd', (i * 0.08) + 's');
