@@ -1,0 +1,238 @@
+---
+layout: default
+title: このリンク、開いて大丈夫？チェック｜富田AIデジタル活用支援事務所
+description: SMSやメールで届いたリンクを開く前に貼り付けると、ドメインの登録日やURLの形から、注意したほうがいい印があるかを確かめられる無料チェック（試作版）です。
+---
+
+<style>
+.uc-input{width:100%;box-sizing:border-box;min-height:120px;padding:14px 16px;border:1px solid #C9D6CF;border-radius:12px;font:inherit;font-size:17px;line-height:1.7;color:#23282A;background:#FFFFFF;resize:vertical}
+.uc-input:focus-visible{outline:3px solid #9DC3B4;outline-offset:2px}
+.uc-btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 32px;border:0;border-radius:27px;background:#2F5D50;color:#FFFFFF;font:inherit;font-size:18px;font-weight:700;cursor:pointer}
+.uc-btn:disabled{opacity:.6;cursor:default}
+.uc-summary{border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:6px}
+.uc-summary.high{background:#FBE9E3;border:1px solid #F0C2B2;color:#7A2A12}
+.uc-summary.mid{background:#FFF7E6;border:1px solid #F0D9A8;color:#6B4A0E}
+.uc-summary.low{background:#EEF3F0;border:1px solid #CFE0D7;color:#2F5D50}
+.uc-row{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-bottom:1px solid #E4E7E3}
+.uc-mark{flex:0 0 auto;min-width:64px;text-align:center;font-size:13px;font-weight:700;border-radius:10px;padding:0 8px;line-height:1.9}
+.uc-mark.high{background:#FBE9E3;color:#A23B1B}
+.uc-mark.mid{background:#FFF1D6;color:#8A5A00}
+.uc-mark.ok{background:#EEF3F0;color:#2F5D50}
+.uc-mark.na{background:#EFEFEF;color:#5C6461}
+</style>
+
+<main>
+<section>
+<div style="max-width: 1120px; margin: 0 auto; padding: 56px 24px 48px; display: flex; flex-direction: column; gap: 32px">
+<p style="margin: 0; font-size: 15px; color: #5C6461"><a href="/">トップ</a> ／ <a href="/check.html">無料チェック</a> ／ リンクのチェック</p>
+<div style="display: flex; flex-direction: column; gap: 16px">
+<p style="margin: 0; font-size: 15px; font-weight: 700; color: #2F5D50">無料チェック｜試作版</p>
+<h1 style="margin: 0; font-size: clamp(28px, 4.6vw, 40px); line-height: 1.5; font-weight: 700; text-wrap: balance">このリンク、開いて大丈夫？チェック</h1>
+<p style="margin: 0; font-size: 18px; color: #4A5250; max-width: 680px">SMSやメールで届いたリンクを、開く前にここへ貼り付けてください。そのサイトがいつ作られたか、URLの形におかしなところがないかを確かめます。</p>
+</div>
+<div role="note" style="display: flex; flex-direction: column; gap: 4px; max-width: 760px; background: #FFF7E6; border: 1px solid #F0D9A8; border-radius: 12px; padding: 16px 20px">
+<p style="margin: 0; font-size: 16px; font-weight: 700; color: #6B4A0E">試作版です</p>
+<p style="margin: 0; font-size: 15px; color: #6B4A0E">結果は「注意したほうがいい印があるか」の目安で、安全を保証するものではありません。古くからあるサイトが乗っ取られていることもあります。</p>
+</div>
+</div>
+</section>
+
+<section style="background: #F6F7F5">
+<div style="max-width: 1120px; margin: 0 auto; padding: 48px 24px 72px; display: flex; flex-direction: column; gap: 24px">
+<form id="uc-form" style="display: flex; flex-direction: column; gap: 14px; max-width: 760px">
+<label for="uc-text" style="font-size: 18px; font-weight: 700">確かめたいリンク（メッセージごと貼り付けても大丈夫です）</label>
+<textarea id="uc-text" class="uc-input" placeholder="例）お荷物をお届けにあがりましたが不在のため持ち帰りました。https://example-delivery.top/xxxx" autocomplete="off" spellcheck="false"></textarea>
+<div><button type="submit" id="uc-go" class="uc-btn">確かめる</button></div>
+<p style="margin: 0; font-size: 14px; color: #5C6461">貼り付けた内容は、この事務所には送られません。ドメイン名（例：example.com）だけを、登録情報の公開窓口（RDAP）に問い合わせます。リンク先のページは開きません。</p>
+</form>
+
+<div id="uc-result" style="display: flex; flex-direction: column; gap: 16px; max-width: 760px" aria-live="polite"></div>
+</div>
+</section>
+
+<section>
+<div style="max-width: 1120px; margin: 0 auto; padding: 72px 24px 0; display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; flex-wrap: wrap; gap: 32px">
+<div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px; font-weight: 700">迷ったときは</h2>
+<ul style="margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 8px; font-size: 16px; color: #4A5250">
+<li>リンクは開かずに、いつも使っている公式のアプリや、自分で調べた公式サイトから確かめる</li>
+<li>お金や個人情報のことで不安なときは、消費者ホットライン（188）に相談する</li>
+<li>詐欺かもしれないと思ったら、警察相談専用電話（#9110）に相談する</li>
+</ul>
+</div>
+<div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+<h2 style="margin: 0; font-size: 22px; font-weight: 700">毎回貼るのが面倒な方へ</h2>
+<p style="margin: 0; font-size: 16px; color: #4A5250">サイトを開いたときに、同じ仕組みで自動で知らせてくれるブラウザの拡張機能を試作しています。パソコンやスマホへの入れ方は、ご相談の中で一緒に行います。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<div style="max-width: 1120px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center">
+<h2 style="margin: 0; font-size: 26px; font-weight: 700">団体や会社で、詐欺への備えを考えたい方へ</h2>
+<p style="margin: 0; font-size: 17px; color: #4A5250; max-width: 600px">怪しいメールやSMSへの対応を、一人ひとりの判断まかせにしないための講座や相談を行っています。初回のご相談は無料です。</p>
+<a href="https://forms.gle/3riH2FEBzJ8SkmK79" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 36px; background: #2F5D50; color: #FFFFFF; border-radius: 28px; text-decoration: none; font-size: 18px; font-weight: 700">フォームで相談する</a>
+</div>
+</section>
+</main>
+
+<script>
+(function () {
+  // 公式ドメインの例（名前を含むのにここ以外なら「なりすましの印」）
+  var BRANDS = [
+    ['amazon', ['amazon.co.jp', 'amazon.com']],
+    ['rakuten', ['rakuten.co.jp', 'rakuten.com']],
+    ['yamato', ['kuronekoyamato.co.jp', 'yamato-hd.co.jp']],
+    ['kuroneko', ['kuronekoyamato.co.jp']],
+    ['sagawa', ['sagawa-exp.co.jp']],
+    ['japanpost', ['japanpost.jp']],
+    ['yubin', ['japanpost.jp']],
+    ['smbc', ['smbc.co.jp', 'smbc-card.com']],
+    ['mufg', ['mufg.jp']],
+    ['mizuho', ['mizuhobank.co.jp', 'mizuho-fg.co.jp']],
+    ['yucho', ['jp-bank.japanpost.jp', 'japanpost.jp']],
+    ['apple', ['apple.com']],
+    ['icloud', ['icloud.com', 'apple.com']],
+    ['docomo', ['docomo.ne.jp']],
+    ['softbank', ['softbank.jp', 'softbank.co.jp']],
+    ['paypay', ['paypay.ne.jp']],
+    ['mercari', ['mercari.com']],
+    ['aeon', ['aeon.co.jp', 'aeon.com']],
+    ['nta', ['nta.go.jp']],
+    ['google', ['google.com', 'google.co.jp']],
+    ['microsoft', ['microsoft.com']]
+  ];
+  var SHORTENERS = ['bit.ly', 't.co', 'tinyurl.com', 'is.gd', 'ow.ly', 'buff.ly', 'x.gd', 'cutt.ly', 'rebrand.ly', 'shorturl.at', 'v.gd'];
+  var RISKY_TLDS = ['top', 'xyz', 'icu', 'buzz', 'click', 'cyou', 'sbs', 'cfd', 'rest', 'lol', 'mom', 'bond', 'cn'];
+  var JP_SECOND = ['co', 'or', 'ne', 'ac', 'go', 'ed', 'gr', 'ad'];
+  var JP_PREFS = 'hokkaido aomori iwate miyagi akita yamagata fukushima ibaraki tochigi gunma saitama chiba tokyo kanagawa niigata toyama ishikawa fukui yamanashi nagano gifu shizuoka aichi mie shiga kyoto osaka hyogo nara wakayama tottori shimane okayama hiroshima yamaguchi tokushima kagawa ehime kochi fukuoka saga nagasaki kumamoto oita miyazaki kagoshima okinawa'.split(' ');
+  var OTHER_SECOND = ['co.uk', 'com.cn', 'com.tw', 'com.hk', 'com.au', 'co.kr'];
+  var DIRECT_RDAP = {
+    com: 'https://rdap.verisign.com/com/v1/',
+    net: 'https://rdap.verisign.com/net/v1/',
+    jp: 'https://rdap.jprs.jp/'
+  };
+
+  function extractUrl(text) {
+    var m = text.match(/(https?:\/\/[^\s<>"'「」（）]+)/i);
+    if (m) return m[1];
+    var m2 = text.match(/((?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/[^\s<>"'「」（）]*)?)/i);
+    return m2 ? 'http://' + m2[1] : null;
+  }
+  function registrable(host) {
+    var parts = host.split('.');
+    if (parts.length <= 2) return host;
+    var last2 = parts.slice(-2).join('.');
+    var sld = parts[parts.length - 2];
+    if (parts[parts.length - 1] === 'jp') {
+      if (JP_SECOND.indexOf(sld) >= 0) return parts.slice(-3).join('.');
+      if (sld === 'lg' || JP_PREFS.indexOf(sld) >= 0) {
+        if (parts.length >= 4 && ['city', 'town', 'vill', 'pref'].indexOf(parts[parts.length - 4]) >= 0) return parts.slice(-4).join('.');
+        if (sld === 'lg' && parts.length >= 4) return parts.slice(-4).join('.');
+        return parts.slice(-3).join('.');
+      }
+    }
+    if (OTHER_SECOND.indexOf(last2) >= 0) return parts.slice(-3).join('.');
+    return last2;
+  }
+  function withTimeout(p, ms) {
+    return Promise.race([p, new Promise(function (_, rej) { setTimeout(function () { rej(new Error('timeout')); }, ms); })]);
+  }
+  var bootstrap = null;
+  function rdapBase(tld) {
+    if (!bootstrap) {
+      bootstrap = withTimeout(fetch('https://data.iana.org/rdap/dns.json').then(function (r) { return r.json(); }), 6000)
+        .catch(function () { return null; });
+    }
+    return bootstrap.then(function (b) {
+      var bases = [];
+      if (b && b.services) {
+        b.services.forEach(function (s) { if (s[0].indexOf(tld) >= 0) bases = bases.concat(s[1]); });
+      }
+      if (DIRECT_RDAP[tld] && bases.indexOf(DIRECT_RDAP[tld]) < 0) bases.push(DIRECT_RDAP[tld]);
+      bases.push('https://rdap.org/');
+      return bases;
+    });
+  }
+  function lookupRegistration(domain) {
+    var tld = domain.split('.').pop();
+    return rdapBase(tld).then(function (bases) {
+      var i = 0;
+      function next() {
+        if (i >= bases.length) return Promise.reject(new Error('unavailable'));
+        var base = bases[i++];
+        if (base.slice(-1) !== '/') base += '/';
+        return withTimeout(fetch(base + 'domain/' + encodeURIComponent(domain), { headers: { Accept: 'application/rdap+json' } }), 8000)
+          .then(function (r) {
+            if (r.status === 404) return { notFound: true };
+            if (!r.ok) throw new Error(r.status);
+            return r.json().then(function (j) {
+              var ev = (j.events || []).filter(function (e) { return e.eventAction === 'registration'; })[0];
+              return ev ? { date: new Date(ev.eventDate) } : { noDate: true };
+            });
+          })
+          .catch(next);
+      }
+      return next();
+    });
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function row(level, label, text) {
+    var names = { high: '強い注意', mid: '注意', ok: '印なし', na: '調べられず' };
+    return '<div class="uc-row"><span class="uc-mark ' + level + '">' + names[level] + '</span><div style="display:flex;flex-direction:column;gap:2px;min-width:0"><b style="font-size:16px">' + label + '</b><span style="font-size:15px;color:#4A5250;overflow-wrap:anywhere">' + text + '</span></div></div>';
+  }
+
+  var form = document.getElementById('uc-form');
+  var out = document.getElementById('uc-result');
+  var btn = document.getElementById('uc-go');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var raw = document.getElementById('uc-text').value.trim();
+    var urlText = extractUrl(raw);
+    if (!urlText) { out.innerHTML = '<p style="margin:0;font-size:16px">リンク（https:// から始まる部分）が見つかりませんでした。もう一度貼り付けてください。</p>'; return; }
+    var u;
+    try { u = new URL(urlText); } catch (err) { out.innerHTML = '<p style="margin:0;font-size:16px">リンクの形を読み取れませんでした。</p>'; return; }
+    var host = u.hostname.toLowerCase().replace(/\.$/, '');
+    var isIp = /^\d{1,3}(\.\d{1,3}){3}$/.test(host) || host.indexOf(':') >= 0;
+    var domain = isIp ? host : registrable(host);
+    var tld = host.split('.').pop();
+    var rows = [], score = 0;
+
+    if (u.protocol === 'http:' && /^https?:\/\//i.test(urlText)) { rows.push(row('mid', '通信が暗号化されていない', 'http:// で始まっています。入力した内容が途中で読み取られるおそれがあります。')); score += 1; }
+    if (isIp) { rows.push(row('high', 'ドメイン名ではなく数字の住所', '普通の会社のサイトは、数字だけの住所（IPアドレス）をリンクに使うことはほとんどありません。')); score += 3; }
+    if (host.indexOf('xn--') >= 0) { rows.push(row('high', '見た目が紛らわしい文字', '日本語や特殊な文字を使ったドメインです。有名なサイトに似せている場合があります。')); score += 3; }
+    if (SHORTENERS.indexOf(host) >= 0) { rows.push(row('mid', '短縮URLで行き先が見えない', '開くまで本当の行き先が分かりません。送り主に心当たりがなければ開かないでください。')); score += 1; }
+    var tokens = host.split(/[.\-]/);
+    var brandHit = BRANDS.filter(function (b) { return tokens.some(function (t) { return t === b[0] || (b[0].length >= 5 && t.indexOf(b[0]) >= 0); }) && b[1].indexOf(domain) < 0 && !b[1].some(function (d) { return host === d || host.slice(-(d.length + 1)) === '.' + d; }); })[0];
+    if (brandHit && !isIp) { rows.push(row('high', '有名なサービスの名前を含むのに、公式のドメインではない', '「' + esc(brandHit[0]) + '」を含みますが、公式のドメイン（' + esc(brandHit[1].join('、')) + '）ではありません。なりすましによく使われる形です。')); score += 3; }
+    if (!isIp && RISKY_TLDS.indexOf(tld) >= 0) { rows.push(row('mid', '詐欺に使われることが多い末尾', '「.' + esc(tld) + '」は安く取れるため、詐欺サイトに使われやすい末尾です。これだけで危険とは限りません。')); score += 1; }
+
+    out.innerHTML = '<p style="margin:0;font-size:16px">調べています…（' + esc(domain) + '）</p>';
+    btn.disabled = true;
+    var age = isIp ? Promise.resolve({ skip: true }) : lookupRegistration(domain).catch(function () { return { failed: true }; });
+    age.then(function (a) {
+      if (a.date) {
+        var days = Math.floor((Date.now() - a.date.getTime()) / 86400000);
+        var when = a.date.getFullYear() + '年' + (a.date.getMonth() + 1) + '月' + a.date.getDate() + '日';
+        if (days < 30) { rows.unshift(row('high', 'できたばかりのサイト', when + 'に登録された、まだ' + days + '日目のドメインです。詐欺サイトは作ってすぐに使われることが多いです。')); score += 3; }
+        else if (days < 365) { rows.unshift(row('mid', '1年以内にできたサイト', when + 'に登録されたドメインです。新しいお店の可能性もありますが、念のため注意してください。')); score += 1; }
+        else { rows.unshift(row('ok', 'ドメインの登録日', when + 'に登録されたドメインです（約' + Math.floor(days / 365) + '年前）。')); }
+      } else if (a.notFound) {
+        rows.unshift(row('high', '登録が見つからないドメイン', '登録情報が見つかりませんでした。すでに消されたサイトか、入力の誤りかもしれません。')); score += 2;
+      } else if (!a.skip) {
+        rows.unshift(row('na', 'ドメインの登録日', 'このドメインの登録日は、この画面からは調べられませんでした。ほかの印を参考にしてください。'));
+      }
+      if (!rows.some(function (r) { return r.indexOf('uc-mark high') >= 0 || r.indexOf('uc-mark mid') >= 0; })) {
+        rows.push(row('ok', 'URLの形', 'URLの形に、目立っておかしなところはありませんでした。'));
+      }
+      var level = score >= 3 ? 'high' : score >= 1 ? 'mid' : 'low';
+      var head = { high: '開かないほうがよい印があります', mid: '注意したほうがいい印があります', low: '目立った印は見つかりませんでした' }[level];
+      var sub = { high: 'リンクは開かずに、公式のアプリやサイトから確かめてください。', mid: '送り主に心当たりがなければ、開かずに公式のアプリやサイトから確かめてください。', low: 'ただし安全を保証するものではありません。送り主に心当たりがないときは開かないでください。' }[level];
+      out.innerHTML = '<div class="uc-summary ' + level + '"><p style="margin:0;font-size:19px;font-weight:700">' + head + '</p><p style="margin:0;font-size:15px">' + sub + '</p><p style="margin:0;font-size:14px;overflow-wrap:anywhere">調べたドメイン：' + esc(host) + '</p></div><div>' + rows.join('') + '</div>';
+      btn.disabled = false;
+    });
+  });
+})();
+</script>
