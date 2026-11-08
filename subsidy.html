@@ -31,6 +31,7 @@ description: やりたいことと従業員数を選ぶだけで、東京都内�
 <p style="margin: 0; font-size: 15px; font-weight: 700; color: #2F5D50">無料チェック｜試作版</p>
 <h1 style="margin: 0; font-size: clamp(28px, 4.6vw, 40px); line-height: 1.5; font-weight: 700; text-wrap: balance">東京の補助金・助成金さがし</h1>
 <p style="margin: 0; font-size: 18px; color: #4A5250; max-width: 680px">やりたいことと従業員数を選ぶと、東京都内の中小企業・個人事業主が使える国と東京都の制度を、締切の近い順に並べます。公式サイトで迷子になる前の、最初の当たりづけに使ってください。</p>
+<p style="margin: 0; font-size: 16px; color: #4A5250; max-width: 680px">補助金は、何に使うかが決まると探しやすくなります。まだ決まっていない方は、先に<a href="/check-sales.html">売上の流れチェック</a>で、どこに手を入れるかを確かめてみてください。</p>
 </div>
 <div role="note" style="display: flex; flex-direction: column; gap: 4px; max-width: 760px; background: #FFF7E6; border: 1px solid #F0D9A8; border-radius: 12px; padding: 16px 20px">
 <p style="margin: 0; font-size: 16px; font-weight: 700; color: #6B4A0E">試作版です<span id="sb-updated" style="font-weight: 500"></span></p>
@@ -98,6 +99,7 @@ description: やりたいことと従業員数を選ぶだけで、東京都内�
 <div style="background: #EEF3F0; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 10px; max-width: 860px">
 <h3 style="margin: 0; font-size: 19px; font-weight: 700; color: #2F5D50">地域や業種に合わせた版も作れます</h3>
 <p style="margin: 0; font-size: 16px; color: #4A5250">例えば杉並区なら、区の中小企業向けの支援ページや相談窓口の案内も定期的に確認して、区の独自の制度まで含めた一覧にできます。業種や「やりたいこと」に絞った版や、締切が近づいたらお知らせする仕組みも、ご相談に応じて作ります。</p>
+<p style="margin: 0; font-size: 16px; color: #4A5250">全国の制度を網羅的に探したい方は、民間の補助金検索サービスもあわせてお使いください。この事務所の役割は、何に使うかを一緒に決め、地元の制度まで含めて候補を絞り、対象になるかや準備することを一緒に確かめることです。</p>
 </div>
 </div>
 </section>
@@ -189,6 +191,13 @@ description: やりたいことと従業員数を選ぶだけで、東京都内�
     var u = json.updated.split('-');
     document.getElementById('sb-updated').textContent = '（' + u[0] + '年' + parseInt(u[1], 10) + '月' + parseInt(u[2], 10) + '日時点の情報）';
     buildChips();
+    // ほかのページから「やりたいこと」を指定して開かれたとき（例：?p=it,sales）
+    try {
+      (new URLSearchParams(location.search).get('p') || '').split(',').forEach(function (k) {
+        var el = document.getElementById('sb-p-' + k);
+        if (el) el.checked = true;
+      });
+    } catch (err) {}
     render();
   }
   if (window.SUBSIDY_DATA) {

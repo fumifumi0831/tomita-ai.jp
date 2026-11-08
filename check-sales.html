@@ -71,6 +71,68 @@ description: いくつかの質問に答えると、お店や会社の売上の�
   // 「減らせる割合」「空いた枠が埋まる割合」は事務所の目安
   var CUT_RATE = 0.5, FILL_RATE = 0.5, WEEKS = 4;
   var TIME_INDEX = 4; // 「時間」の場面の位置（予約・注文を断るかの見分けに使う）
+  // 各場面の一手を、補助金さがしの「やりたいこと」に結びつける（空＝費用をかけずにできる一手）
+  var USES = {
+    person: [['sales'], ['it'], ['it', 'sales'], ['sales', 'it'], ['it'], []],
+    company: [['sales'], ['it'], ['it'], ['it', 'sales'], ['it', 'equip'], []]
+  };
+  // 一手そのものは無料から始められるか
+  var FREE = {
+    person: [true, true, false, true, false, true],
+    company: [false, true, true, true, false, true]
+  };
+  var subsidyData = null;
+  function loadSubsidies() {
+    if (!subsidyData) {
+      subsidyData = window.SUBSIDY_DATA ? Promise.resolve(window.SUBSIDY_DATA)
+        : fetch('/data/subsidies.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+    }
+    return subsidyData;
+  }
+  function yen(n) {
+    if (!n) return '上限は枠により異なる';
+    if (n >= 100000000) return '上限' + (n / 100000000) + '億円';
+    return '上限' + (n / 10000).toLocaleString('ja-JP') + '万円';
+  }
+  function renderSubsidies(box, uses, free, set) {
+    if (!uses.length) {
+      box.innerHTML = '<p style="margin:0;font-size:16px">この一手は、費用をかけずに始められます。補助金を待たずに、まず一歩目を進めてみてください。</p>';
+      return;
+    }
+    box.innerHTML = '<p style="margin:0;font-size:15px;color:#5C6461">使えそうな制度を確かめています…</p>';
+    loadSubsidies().then(function (json) {
+      var now = new Date();
+      var rows = json.items.filter(function (i) {
+        if ((i.fit || []).indexOf(set) < 0) return false;
+        // 人の育成や働き方の制度は、売上の流れの一手には出さない
+        if (i.purposes.indexOf('people') >= 0 && uses.indexOf('people') < 0) return false;
+        if (!i.purposes.some(function (x) { return uses.indexOf(x) >= 0; })) return false;
+        return !i.deadline || new Date(i.deadline + ':00+09:00') > now;
+      }).sort(function (a, b) {
+        if (!a.deadline) return 1;
+        if (!b.deadline) return -1;
+        return new Date(a.deadline + ':00+09:00') - new Date(b.deadline + ':00+09:00');
+      }).slice(0, 3);
+      var lead = free
+        ? 'この一手は、無料のものから始められます。仕組みを広げるときに使えそうな、東京都内の制度です（業種を問わず広く使えるもの）。'
+        : 'この一手に使えそうな、東京都内の制度です。業種を問わず広く使えるものを、締切の近い順に並べています。';
+      var list = rows.length ? rows.map(function (i) {
+        var d = i.deadline ? new Date(i.deadline + ':00+09:00') : null;
+        var dl = d ? (d.getMonth() + 1) + '月' + d.getDate() + '日締切' : '締切は公式サイトで確認';
+        return '<li style="display:flex;flex-direction:column;gap:4px;padding:14px 0;border-bottom:1px solid #E4E7E3">' +
+          '<span style="font-size:13px;font-weight:700;color:#2F5D50">' + i.org + '</span>' +
+          '<a href="' + i.url + '" target="_blank" rel="noopener" style="font-size:16px;font-weight:700">' + i.title + '</a>' +
+          '<span style="font-size:14px;color:#4A5250;font-variant-numeric:tabular-nums">' + yen(i.maxAmount) + '・' + dl + '</span></li>';
+      }).join('') : '<li style="padding:14px 0;font-size:15px;color:#4A5250">いま受付中の制度は見つかりませんでした。</li>';
+      var more = '/subsidy.html' + '?p=' + uses.join(',');
+      box.innerHTML = '<p style="margin:0;font-size:16px">' + lead + '</p>' +
+        '<ul style="margin:0;padding:0;list-style:none;border-top:1px solid #E4E7E3">' + list + '</ul>' +
+        '<a href="' + more + '" style="font-size:16px;font-weight:700">ほかの制度も見る →</a>' +
+        '<p style="margin:0;font-size:14px;color:#5C6461">対象になるかどうかは、公式ページで確かめてください。迷ったら、どれが合うかを一緒に確かめます。</p>';
+    }).catch(function () {
+      box.innerHTML = '<p style="margin:0;font-size:15px;color:#4A5250">制度の一覧を読み込めませんでした。<a href="/subsidy.html">東京の補助金・助成金さがし</a>から探してみてください。</p>';
+    });
+  }
   var SETS = {
     person: {
       nums: { price: '客単価（円）', pricePh: '5000', unit: 'mins', size: '1件にかかる時間（分）', sizePh: '60', admin: '電話受けや予約管理、請求などの事務の時間（週・時間）', adminPh: '5' },
@@ -229,7 +291,10 @@ description: いくつかの質問に答えると、お店や会社の売上の�
       (w.link ? '<a href="' + w.link.href + '" style="font-size:16px;font-weight:700">' + w.link.text + ' →</a>' : '') +
       '</div>' + money +
       '<div style="display:flex;flex-direction:column;gap:12px"><p style="margin:0;font-size:16px;font-weight:700">場面ごとの太さ</p><div class="sc-bar">' + bars + '</div>' +
-      '<p style="margin:0;font-size:14px;color:#5C6461">一手に費用がかかる場合は、<a href="/subsidy.html">東京の補助金・助成金さがし</a>で使える制度がないか確かめてみてください。</p></div>';
+      '</div>' +
+      '<div style="background:#FFFFFF;border:1px solid #DCE3DE;border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:10px">' +
+      '<p style="margin:0;font-size:16px;font-weight:700;color:#2F5D50">この一手に使える制度</p><div id="sc-subsidy" style="display:flex;flex-direction:column;gap:10px"></div></div>';
+    renderSubsidies(document.getElementById('sc-subsidy'), USES[set][weakest], FREE[set][weakest], set);
     out.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 })();
