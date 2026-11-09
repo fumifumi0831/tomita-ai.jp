@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07",
+  "updated": "2026-11-09",
   "note": "Jグランツ（国・東京都）とJ-Net21（区市町村）から、東京都内の中小企業・個人事業主が使える受付中の制度を選んだもの。deadlineは日本時間、nullは公式サイトで確認。maxEmployeesは従業員数の上限、nullは制限なし。 fitは業種や状況を問わず広く使える制度に付ける印で、personは個人のお客さま相手の店・サービス、companyは会社相手の事業に合うもの。特定の業種・地域・状況（創業直後、事業承継、観光など）向けの制度は空の配列。",
   "purposeLabels": {
     "it": "ITやデジタルを取り入れたい",
@@ -292,6 +292,159 @@
       "maxEmployees": null,
       "summary": "小平市内の中小企業が、POSレジや会計・勤怠・在庫管理のシステムを入れる費用の5分の4を助成します。",
       "url": "https://j-net21.smrj.go.jp/snavi/articles/191177",
+      "fit": []
+    },
+    {
+      "title": "テレワークトータルサポート助成金（令和8年度）",
+      "org": "東京都",
+      "purposes": [
+        "it",
+        "people"
+      ],
+      "maxAmount": 2500000,
+      "deadline": "2027-02-05T23:59",
+      "maxEmployees": 999,
+      "summary": "在宅勤務やモバイル勤務のためのパソコン・機器・ソフトなどをそろえる費用を助成します。申請の前に、東京都のテレワーク相談窓口を利用する必要があります。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDYyhMAH",
+      "fit": [
+        "person",
+        "company"
+      ]
+    },
+    {
+      "title": "女性の活躍推進に向けた職場環境改善プロジェクト（令和8年度）",
+      "org": "東京都",
+      "purposes": [
+        "people"
+      ],
+      "maxAmount": 1800000,
+      "deadline": "2027-03-31T23:59",
+      "maxEmployees": null,
+      "summary": "女性が働きやすく活躍できる職場づくりに取り組む都内中小企業を、奨励金や専門家の助言で支援します。",
+      "url": "https://j-net21.smrj.go.jp/snavi/articles/193600",
+      "fit": [
+        "person",
+        "company"
+      ]
+    },
+    {
+      "title": "中小企業の外国人従業員に対する研修等支援助成金（一般コース・令和8年度）",
+      "org": "東京都",
+      "purposes": [
+        "people"
+      ],
+      "maxAmount": 250000,
+      "deadline": "2027-01-14T23:59",
+      "maxEmployees": 300,
+      "summary": "外国人の従業員に向けた研修などにかかる費用を助成します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDe4iMAD",
+      "fit": []
+    },
+    {
+      "title": "エイジフレンドリー補助金",
+      "org": "国",
+      "purposes": [
+        "people",
+        "equip"
+      ],
+      "maxAmount": 1000000,
+      "deadline": "2026-11-21T00:00",
+      "maxEmployees": null,
+      "summary": "高い年齢の従業員が安全に働けるよう、職場の環境を整える費用を補助します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDYbNMAX",
+      "fit": []
+    },
+    {
+      "title": "東京都中小企業障害者雇用スタート支援奨励金",
+      "org": "東京都",
+      "purposes": [
+        "people"
+      ],
+      "maxAmount": 1200000,
+      "deadline": null,
+      "maxEmployees": null,
+      "summary": "障害のある方の雇用を始める都内中小企業を、奨励金で支援します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0WJ200000CDOrTMAX",
+      "fit": []
+    },
+    {
+      "title": "ゼロエミッション実現に向けた経営推進支援事業助成金",
+      "org": "東京都",
+      "purposes": [
+        "cost",
+        "equip"
+      ],
+      "maxAmount": 15000000,
+      "deadline": "2027-01-29T17:00",
+      "maxEmployees": 900,
+      "summary": "二酸化炭素を減らす経営に取り組む中小企業を助成します。",
+      "url": "https://www.jgrants-portal.go.jp/subsidy/a0W5h00000ZuemGEAR",
+      "fit": []
+    },
+    {
+      "title": "中小企業等の展示会への出展費用補助（令和8年度下半期分）",
+      "org": "中央区",
+      "purposes": [
+        "sales"
+      ],
+      "maxAmount": null,
+      "deadline": "2027-02-26T23:59",
+      "maxEmployees": null,
+      "summary": "区内の中小企業などが販路を広げるために展示会（オンラインを含む）へ出展する費用の一部を補助します。",
+      "url": "https://j-net21.smrj.go.jp/snavi/articles/193114",
+      "fit": []
+    },
+    {
+      "title": "物価高騰緊急対策支援金",
+      "org": "葛飾区",
+      "purposes": [
+        "cost"
+      ],
+      "maxAmount": null,
+      "deadline": "2027-01-15T23:59",
+      "maxEmployees": null,
+      "summary": "物価の値上がりが続く中、区内の個人事業主や法人に支援金を交付して負担を軽くします。",
+      "url": "https://j-net21.smrj.go.jp/snavi/articles/195358",
+      "fit": []
+    },
+    {
+      "title": "小金井市事業者物価高騰等対応支援金",
+      "org": "小金井市",
+      "purposes": [
+        "cost"
+      ],
+      "maxAmount": null,
+      "deadline": "2027-01-15T23:59",
+      "maxEmployees": null,
+      "summary": "物価の値上がりなどで影響を受けている市内の中小企業などに、事業を続けるための支援金を支給します。",
+      "url": "https://j-net21.smrj.go.jp/snavi/articles/193097",
+      "fit": []
+    },
+    {
+      "title": "文京区事業承継総合支援事業（小規模企業者事業承継設備投資補助）",
+      "org": "文京区",
+      "purposes": [
+        "succession",
+        "equip"
+      ],
+      "maxAmount": null,
+      "deadline": "2027-03-31T23:59",
+      "maxEmployees": null,
+      "summary": "区内の小規模企業が事業を引き継ぐときに、設備の導入や入れ替えにかかる費用の一部を補助します。",
+      "url": "https://j-net21.smrj.go.jp/snavi/articles/193219",
+      "fit": []
+    },
+    {
+      "title": "持続可能性向上支援補助金（生産性向上設備）",
+      "org": "文京区",
+      "purposes": [
+        "equip"
+      ],
+      "maxAmount": null,
+      "deadline": null,
+      "maxEmployees": null,
+      "summary": "国の「先端設備等導入計画」を作って設備投資をする区内の中小企業に、設備の費用の一部を補助します。先着順です。",
+      "url": "https://j-net21.smrj.go.jp/snavi/articles/193223",
       "fit": []
     }
   ]
